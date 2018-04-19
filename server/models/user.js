@@ -1,10 +1,33 @@
+'use strict'
 
-
-const User = sequelize.define('user', {
-    firstName: {
+module.exports = function (sequelize, Sequelize) {
+  const User = sequelize.define('ERS_USERS', {
+    ERS_USERS_ID: {
+      type: Sequelize.INTEGER,
+      notNull: true,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    ERS_USERNAME: {
       type: Sequelize.STRING
     },
-    lastName: {
+    ERS_PASSWORD: {
+      type: Sequelize.STRING
+    },
+    USER_FIRST_NAME: {
+      type: Sequelize.STRING
+    },
+    USER_LAST_NAME: {
+      type: Sequelize.STRING
+    },
+    USER_EMAIL: {
       type: Sequelize.STRING
     }
-  });
+  }, 
+    {
+      freezeTableName: true,
+      createdAt: false,
+      updatedAt: false
+    });
+    return User;
+}
